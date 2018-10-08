@@ -1,4 +1,4 @@
-package fvs.edu.br.topicos.resources;
+package eleicao.resources;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -7,20 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import fvs.edu.br.topicos.domain.Categoria;
-import fvs.edu.br.topicos.services.CategoriaService;
+import eleicao.domain.Candidato;
+import eleicao.services.CandidatoService;
 
 @RestController
-@RequestMapping(value = "/categorias")
-public class CategoriaResource {
+@RequestMapping(value = "/candidatos")
+public class CandidatoResource {
 
 	@Autowired
-	private CategoriaService service;
-
+	private CandidatoService service;
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> listar(@PathVariable Integer id) {
-		Categoria obj = service.buscar(id);
-
-		return ResponseEntity.ok().body(obj);
+		Candidato dado = service.buscarCandidatos(id);
+		return ResponseEntity.ok().body(dado);
 	}
+	
 }
