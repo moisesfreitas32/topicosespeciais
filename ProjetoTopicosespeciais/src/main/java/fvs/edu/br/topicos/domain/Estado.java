@@ -11,9 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Estado implements Serializable  {
+public class Estado implements Serializable{
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -31,7 +31,6 @@ public class Estado implements Serializable  {
 		super();
 		this.id = id;
 		this.nome = nome;
-		
 	}
 
 	public Integer getId() {
@@ -85,4 +84,5 @@ public class Estado implements Serializable  {
 	
 	
 	
+
 }
