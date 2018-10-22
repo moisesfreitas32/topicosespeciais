@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Endereco implements Serializable{
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
@@ -24,22 +24,18 @@ public class Endereco implements Serializable{
 	private String bairro;
 	private String cep;
 	
-	
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="cidade_id")
 	private Cidade cidade;
 	
-	
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 	
-	
-	public Endereco( ) {
+	public Endereco() {
 		
 	}
-
 
 	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep,
 			Cidade cidade, Cliente cliente) {
@@ -54,86 +50,69 @@ public class Endereco implements Serializable{
 		this.cliente = cliente;
 	}
 
-
 	public Integer getId() {
 		return id;
 	}
-
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-
 	public String getLogradouro() {
 		return logradouro;
 	}
-
 
 	public void setLogradouro(String logradouro) {
 		this.logradouro = logradouro;
 	}
 
-
 	public String getNumero() {
 		return numero;
 	}
-
 
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
-
 	public String getComplemento() {
 		return complemento;
 	}
-
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
 	}
 
-
 	public String getBairro() {
 		return bairro;
 	}
-
 
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
 
-
 	public String getCep() {
 		return cep;
 	}
-
 
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
 
-
 	public Cidade getCidade() {
 		return cidade;
 	}
-
 
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
 	}
 
-
 	public Cliente getCliente() {
 		return cliente;
 	}
 
-
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -142,7 +121,6 @@ public class Endereco implements Serializable{
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -160,6 +138,11 @@ public class Endereco implements Serializable{
 			return false;
 		return true;
 	}
+	
+	
+	
+	
+	
 	
 	
 }

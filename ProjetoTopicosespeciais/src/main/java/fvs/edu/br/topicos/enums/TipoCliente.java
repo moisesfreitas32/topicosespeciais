@@ -4,11 +4,12 @@ public enum TipoCliente {
 
 	PESSOAFISICA(1),
 	PESSOAJURIDICA(2);
-	
-	int tipopessoa;
-	
+
+	int tipoPessoa;
 	
 	TipoCliente(int tipoPessoa){
-		this.tipopessoa = tipoPessoa;
+		this.tipoPessoa = tipoPessoa;
 	}
+	
+	
 }
