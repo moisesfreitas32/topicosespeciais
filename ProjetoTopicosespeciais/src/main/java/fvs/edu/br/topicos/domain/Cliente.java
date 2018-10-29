@@ -18,31 +18,34 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import fvs.edu.br.topicos.enums.TipoCliente;
 
-
 @Entity
-public class Cliente implements Serializable{
+public class Cliente implements Serializable  {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
-	private String nome;
-	private String email;
-	private String cpfOuCnpj;
-	private TipoCliente tipo;
-	
-	
-	public List<Pedido> getPedido() {
-		return pedido;
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	 private Integer id;
+	 private String nome;
+	 private String email;
+	 private String cpfOuCnpj;
+	 private TipoCliente tipo;
+	 
+	 @OneToMany(mappedBy="cliente")
+	 private List<Endereco> endereco = new ArrayList<>();
+	 
+	 public List<Pedido> getPedidos() {
+		return pedidos;
 	}
 
-
-	public void setPedido(List<Pedido> pedido) {
-		this.pedido = pedido;
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 
-
-	public List<Endereco> getEndereco() {
+	@JsonIgnore
+	@OneToMany(mappedBy="cliente")
+	 private List<Pedido> pedidos = new ArrayList<>();
+	 
+	 public List<Endereco> getEndereco() {
 		return endereco;
 	}
 
@@ -53,26 +56,18 @@ public class Cliente implements Serializable{
 	public Set<String> getTelefones() {
 		return telefones;
 	}
-	
-	@OneToMany(mappedBy="cliente")
-	private List<Endereco> endereco = new ArrayList<>();
-	
-	@ElementCollection
-	@CollectionTable(name="TELEFONE")
-	private Set<String> telefones = new HashSet<>();
-		
-	@JsonIgnore
-    @OneToMany(mappedBy="cliente")
-	private List<Pedido> pedido = new ArrayList<>();
-	
-	public Cliente() {
-		
-	}
-	
-	
+
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
 	}
+
+	@ElementCollection
+	 @CollectionTable(name="TELEFONE")
+	 private Set<String> telefones = new HashSet<>();
+	 
+	 public Cliente () {
+		 
+	 }
 
 	public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoCliente tipo) {
 		super();
@@ -147,7 +142,6 @@ public class Cliente implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-
+	 
+	 
 }
