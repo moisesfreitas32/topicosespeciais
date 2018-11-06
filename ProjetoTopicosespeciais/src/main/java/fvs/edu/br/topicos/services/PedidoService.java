@@ -7,20 +7,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import fvs.edu.br.topicos.domain.Cliente;
-import fvs.edu.br.topicos.repositories.ClienteRepository;
+import fvs.edu.br.topicos.domain.Pedido;
+import fvs.edu.br.topicos.repositories.PedidoRepository;
 import javassist.tools.rmi.ObjectNotFoundException;
 
 @Service
-public class ClienteService {
+public class PedidoService {
 
 	@Autowired
-	private ClienteRepository repo;
-	
+	private PedidoRepository repo;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Cliente buscar(Integer id) throws ObjectNotFoundException{
-		Optional <Cliente> obj = repo.findById(id);
+	public Pedido buscar(Integer id)
+	throws ObjectNotFoundException{
+		Optional<Pedido> obj = repo.findById(id);
 		return obj.orElse(null);
+		
 	}
+	
 }
