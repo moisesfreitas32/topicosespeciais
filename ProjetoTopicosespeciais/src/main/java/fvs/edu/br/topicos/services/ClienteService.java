@@ -4,8 +4,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import fvs.edu.br.topicos.domain.Cliente;
 import fvs.edu.br.topicos.repositories.ClienteRepository;
@@ -13,14 +11,13 @@ import javassist.tools.rmi.ObjectNotFoundException;
 
 @Service
 public class ClienteService {
-
+	
 	@Autowired
 	private ClienteRepository repo;
 	
-	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Cliente buscar(Integer id) throws ObjectNotFoundException{
-		Optional <Cliente> obj = repo.findById(id);
+	public Cliente buscar(Integer id) 
+			throws ObjectNotFoundException{
+		Optional<Cliente> obj = repo.findById(id);
 		return obj.orElse(null);
 	}
 }
